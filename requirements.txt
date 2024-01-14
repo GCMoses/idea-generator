@@ -1,0 +1,10 @@
+asyncio
+pydantic
+newspaper3k==0.2.8
+openai
+python-dotenv
+selenium
+beautifulsoup4
+selenium-stealth
+streamlit       
+instructor  
