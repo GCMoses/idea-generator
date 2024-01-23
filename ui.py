@@ -18,14 +18,15 @@ class Ideas(BaseModel):
 
 # Async function to process the main logic
 async def main(search_query, st):
+    # Initialize progress bar outside the try block
+    progress_bar = st.progress(0)
+
     try:
         search_results = search_google_web_automation(search_query, 10)
         all_ideas = []
-
-        # Initialize progress bar
-        progress_bar = st.progress(0)
-        total_results = len(search_results)
         
+        total_results = len(search_results)
+
         for index, result in enumerate(search_results):
             try:
                 # Update progress bar
@@ -54,7 +55,7 @@ async def main(search_query, st):
     except Exception as e:
         st.error(f"Error fetching search results: {e}")
     finally:
-        # Ensure progress bar is filled when process is complete
+        # Ensure progress bar is filled when the process is complete
         progress_bar.progress(100)  
 
 # Streamlit UI setup
